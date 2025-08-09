@@ -13,5 +13,5 @@ Simple card game
 
 
 ## 🔗 Links
-[![GitHub link](https://github.com/BINIL-BALAN/card_game_server.git)](https://cdn-icons-png.flaticon.com/512/25/25231.png)
+[![GitHub link](https://cdn-icons-png.flaticon.com/512/25/25231.png)](https://github.com/BINIL-BALAN/card_game_server.git )
 
