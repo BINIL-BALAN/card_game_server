@@ -8,7 +8,7 @@ A brief description of what this project does and who it's for
 [Documentation](http://localhost:8000/api-docs)
 
 
-## 🚀 About Me
+## About Me
 Simple card game
 
 

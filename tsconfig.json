@@ -6,6 +6,7 @@
     "forceConsistentCasingInFileNames": true,            
     "strict": true,
     "skipLibCheck": true,
+    "removeComments": false,
     "moduleResolution": "node",
     "rootDir": "src",
     "outDir": "dist",
