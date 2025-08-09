@@ -9,9 +9,9 @@ A brief description of what this project does and who it's for
 
 
 ## 🚀 About Me
-I'm a full stack developer...
+Simple card game
 
 
 ## 🔗 Links
-[![GitHub link](https://github.com/BINIL-BALAN/card_game_server.git)](https://github.com)
+[![GitHub link](https://github.com/BINIL-BALAN/card_game_server.git)](https://cdn-icons-png.flaticon.com/512/25/25231.png)
 
