@@ -1,25 +1,27 @@
 import { Response } from 'express';
-import statusMessages from './responseMessages.utils';
+import statusMessages, { StatusCodeType } from './responseMessages.utils';
 type ApoResponseType = {
-    statusCode: keyof typeof statusMessages,
+    statusCode?: StatusCodeType,
     message?: string,
-    data?: any,
+    data: any,
 }
 
-export const success = (res:Response, response:ApoResponseType)=>{
-  return res.status(response.statusCode).json({
-    statusCode: response.statusCode,
-    message: response?.message || statusMessages[response.statusCode],
+ const responseHandler = {success : (res:Response, response:ApoResponseType)=>{
+  return res.status(response.statusCode || 200).json({
     data: response.data,
-    success:true
+    success:true,
+    message: response.message || statusMessages[response.statusCode || 200],
+    statusCode: response?.statusCode || 200,
   })
-}
+},
 
-export const error = (res:Response, response:ApoResponseType)=>{
-  return res.status(response.statusCode).json({
-    statusCode: response.statusCode,
-    message: response?.message || statusMessages[response.statusCode],
-    data: response.data,
+  error :(res:Response, response:Omit<ApoResponseType,"data">)=>{
+  return res.status(response.statusCode || 500).json({
+    statusCode: response.statusCode || 500,
+    message: response.message || statusMessages[response.statusCode || 500],
+    data: null,
     success:false
   })
-}
+}}
+
+export default responseHandler;

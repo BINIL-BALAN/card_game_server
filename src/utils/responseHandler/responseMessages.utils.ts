@@ -73,4 +73,6 @@ const statusMessages = {
   511: "Network Authentication Required"
 };
 
+export type StatusCodeType = keyof typeof statusMessages;
+
 export default statusMessages;
