@@ -17,7 +17,7 @@ import { Response, Request, NextFunction } from "express";
     });
   };
 
-  res.error = (message?: string, statusCode?: StatusCodeType) => {
+  res.error = (statusCode?: StatusCodeType,message?: string, ) => {
     return responseHandler.error(res, {
       message,
       statusCode,
