@@ -12,7 +12,7 @@ declare module "express-serve-static-core" {
         statusCode?: StatusCodeType,
         message?: string
       ) => this;
-      error: (message?: string, statusCode?: StatusCodeType) => this;
+      error: (statusCode?: StatusCodeType,message?: string, ) => this;
     }
   }
 }
