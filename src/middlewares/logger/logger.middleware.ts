@@ -11,18 +11,18 @@ import logger from "@utils/logger/logger.utils";
     if (res.statusCode >= 400) return 'warn';
     return 'info';
   },
-  serializers: {
-    req: (req) => ({
-      method: req.method,
-      url: req.url,
-      params: req.params,
-      query: req.query,
-      body: req.body 
-    }),
-    res: (res) => ({
-      statusCode: res.statusCode
-    })
-  }
+  // serializers: {
+  //   req: (req) => ({
+  //     method: req.method,
+  //     url: req.url,
+  //     params: req.params,
+  //     query: req.query,
+  //     body: req.body 
+  //   }),
+  //   res: (res) => ({
+  //     statusCode: res.statusCode
+  //   })
+  // }
 }) as unknown as RequestHandler;
 
 export default httpLogger
