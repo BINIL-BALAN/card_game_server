@@ -8,11 +8,11 @@ declare module "express-serve-static-core" {
     }
     interface Response {
       success: (
-        data: any,
+       response:{ data: any,
         statusCode?: StatusCodeType,
-        message?: string
+        message?: string}
       ) => this;
-      error: (statusCode?: StatusCodeType,message?: string, ) => this;
+      error: (error:{error?:any,statusCode?: StatusCodeType,message?: string}) => this;
     }
   }
 }

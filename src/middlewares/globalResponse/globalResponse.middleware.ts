@@ -9,19 +9,12 @@ import { Response, Request, NextFunction } from "express";
   res: Response<any>,
   next: NextFunction
 ) => {
-  res.success = (data: any,  statusCode?: StatusCodeType,message?: string,) => {
-    return responseHandler.success(res, {
-      data,
-      message,
-      statusCode,
-    });
+  res.success = (response:{data: any,  statusCode?: StatusCodeType,message?: string,}) => {
+    return responseHandler.success(res, response);
   };
 
-  res.error = (statusCode?: StatusCodeType,message?: string, ) => {
-    return responseHandler.error(res, {
-      message,
-      statusCode,
-    });
+  res.error = (e:{statusCode?: StatusCodeType,message?: string,error?:any} ) => {
+    return responseHandler.error(res, e);
   };
 
   next();

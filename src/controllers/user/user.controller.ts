@@ -7,19 +7,20 @@ class UserController {
     this.userServices = new UserServices();
   }
 
-  getUser(req: Request, res: Response) {
-    req.logger.info("request received !");
-    res.success({ key: "sample data" }, 202);
+  getUser = async (req: Request, res: Response)=> {
+    // req.logger.info("request received !");
+    try {
+      const { id } = req.params;
+      const data = this.userServices.getUser(Number(id));
+      res.success({ statusCode: 200, data});
+    } catch (error) {
+      console.log(error)
+      res.error({error})
+    }
   }
+  save(req: Request, res: Response) {}
 
-  save(req: Request, res: Response){
-     
-  }
-
-  edit(req: Request, res: Response){
-
-  }
-
+  edit(req: Request, res: Response) {}
 }
 
 export default UserController;
