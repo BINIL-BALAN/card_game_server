@@ -1,0 +1,18 @@
+import "express";
+import { StatusCodeType } from "@utils/responseHandler/responseMessages.utils";
+import type { Logger } from "pino";
+declare module "express-serve-static-core" {
+  namespace Express {
+    interface Request {
+      logger: Logger;
+    }
+    interface Response {
+      success: (
+       response:{ data: any,
+        statusCode?: StatusCodeType,
+        message?: string}
+      ) => this;
+      error: (error:{error?:any,statusCode?: StatusCodeType,message?: string}) => this;
+    }
+  }
+}

@@ -1,5 +1,26 @@
-import { Request, Response } from 'express';
+import { UserServices } from "@services/index";
+import { Request, Response } from "express";
 
-export const createUser = async (req:Request,res:Response):Promise<void>=>{
-  res.status(201).json({ message: "User created successfully" }); 
+class UserController {
+  private userServices: UserServices;
+  constructor() {
+    this.userServices = new UserServices();
+  }
+
+  getUser = async (req: Request, res: Response)=> {
+    // req.logger.info("request received !");
+    try {
+      const { id } = req.params;
+      const data = this.userServices.getUser(Number(id));
+      res.success({ statusCode: 200, data});
+    } catch (error) {
+      console.log(error)
+      res.error({error})
+    }
+  }
+  save(req: Request, res: Response) {}
+
+  edit(req: Request, res: Response) {}
 }
+
+export default UserController;
