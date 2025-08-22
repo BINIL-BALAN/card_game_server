@@ -11,11 +11,11 @@ class UserController {
     // req.logger.info("request received !");
     try {
       const { id } = req.params;
-      const data = this.userServices.getUser(Number(id));
+      const data = await this.userServices.getUser(Number(id));
       res.success({ statusCode: 200, data});
-    } catch (error) {
+    } catch (error:any) {
       console.log(error)
-      res.error({error})
+      res.error(error)
     }
   }
   save(req: Request, res: Response) {}

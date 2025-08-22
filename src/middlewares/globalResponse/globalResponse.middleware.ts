@@ -1,3 +1,4 @@
+import HttpError from "@utils/HttpError/HttpError";
 import responseHandler from "@utils/responseHandler/responseHandler.utils";
 import {
   StatusCodeType,
@@ -13,7 +14,7 @@ import { Response, Request, NextFunction } from "express";
     return responseHandler.success(res, response);
   };
 
-  res.error = (e:{statusCode?: StatusCodeType,message?: string,error?:any} ) => {
+  res.error = (e:HttpError ) => {
     return responseHandler.error(res, e);
   };
 

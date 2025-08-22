@@ -1,5 +1,6 @@
 import { Response } from "express";
 import statusMessages, { StatusCodeType } from "./responseMessages.utils";
+import HttpError from "@utils/HttpError/HttpError";
 type ApiResponseType = {
   statusCode?: StatusCodeType;
   message?: string;
@@ -18,14 +19,14 @@ const responseHandler = {
 
   error: (
     res: Response,
-    response: Omit<ApiResponseType, "data"> & { error?: any }
+    error: HttpError
   ) => {
-    return res.status(response.statusCode || 500).json({
-      statusCode: response.statusCode || 500,
-      message: response.message || statusMessages[response.statusCode || 500],
+    return res.status(error?.statusCode || 500).json({
+      statusCode: error?.statusCode || 500,
+      message: error?.message || statusMessages[error?.statusCode || 500],
       data: null,
       success: false,
-      ...(process.env.NODE_ENV === "development" && { error: response.error }),
+      ...(process.env.NODE_ENV === "development" && { error }),
     });
   },
 };

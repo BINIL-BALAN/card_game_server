@@ -1,11 +1,12 @@
+import HttpError from "@utils/HttpError/HttpError";
 import { NextFunction,Request,Response } from "express";
 
 
-const globalErrorHandling = (err:any,_:Request,res:Response,next:NextFunction)=>{
+const globalErrorHandling = (err:HttpError,_:Request,res:Response,next:NextFunction)=>{
    if(res.headersSent){
      next(err)
    }
-   res.error({statusCode:err.statusCode || 500,message:err.message,error:err})
+   res.error(err)
 }
 
 export default globalErrorHandling

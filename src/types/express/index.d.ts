@@ -1,6 +1,7 @@
 import "express";
 import { StatusCodeType } from "@utils/responseHandler/responseMessages.utils";
 import type { Logger } from "pino";
+import HttpError from "@utils/HttpError/HttpError";
 declare module "express-serve-static-core" {
   namespace Express {
     interface Request {
@@ -12,7 +13,7 @@ declare module "express-serve-static-core" {
         statusCode?: StatusCodeType,
         message?: string}
       ) => this;
-      error: (error:{error?:any,statusCode?: StatusCodeType,message?: string}) => this;
+      error: (error:HttpError) => this;
     }
   }
 }
